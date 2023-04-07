@@ -1,0 +1,9 @@
+.card img {
+    width: 147px;
+    height: 207.5px;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+  }
