@@ -13,11 +13,17 @@ app.use(express.static('public'))
 
 app.get('/', function (req, res) {
     res.render('home')
-  })
+})
+
+const routes = require('./routes')
+app.get('/search', routes);
+
+
 
 try {
-    app.listen(8000)
-    console.log('App rodando na porta 8000')
+    const porta = 8000
+    app.listen(porta)
+    console.log('App rodando na porta ' + porta)
 } catch (error) {
     console.log(error)
 }

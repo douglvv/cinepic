@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -13,7 +13,7 @@
     <title>Cinepic</title>
 </head>
 
-<body data-bs-theme="dark">
+<body data-bs-theme="light">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
@@ -34,8 +34,12 @@
                         <img src="img/unknown.png" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="input-group mb-3">
-                                <input type="text" name="movie1" id="movie1" class="form-control"
-                                    placeholder="Pick a movie">
+                                <form action="/search" method="get">
+                                    <input type="text" name="movie1" id="movie1-search-input" class="form-control"
+                                        placeholder="Pick a movie">
+                                    <ul id="search-results"></ul>
+                                </form>
+
                             </div>
                         </div>
                     </div>
@@ -133,6 +137,39 @@
 <script>
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+</script>
+
+<script>
+    const searchInput = document.getElementById('movie1-search-input');
+    const searchResults = document.getElementById('search-results');
+
+    searchInput.onkeyup(function {
+        const search = $(this.value).serialize(); // serializa os dados do form
+        // envia o AJAX request
+        $.ajax({
+            type: 'GET',
+            url: '/search',
+            data: search,
+            success: function (response) {
+                console.log(response)
+            }
+                    error: function (err) {
+                console.log(err);
+            }
+        });
+    });
+
+    //searchResults.addEventListener('change', function () {
+      //  const selectedValue = this.value;
+        //axios.get(`http://www.omdbapi.com/?i=${selectedValue}&apikey=<your_api_key>`)
+          //  .then(response => {
+            //    const movie = response.data;
+                // Display the selected movie in some way
+            //})
+            //.catch(error => {
+              //  console.log(error);
+           // });
+    //});
 </script>
 
 {{!-- BRAND COLORS
