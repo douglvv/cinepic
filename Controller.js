@@ -1,22 +1,51 @@
 const axios = require('axios');
 const { query } = require('express');
 
+
 const Controller = {
     async searchMovie(req, res) {
         try {
-            let query = ''
-            console.log(req.query.movie1)
-            if (req.query.movie1) {
-                query = req.query.movie1.trim();
-            }
+            const key = req.key;
+            let query = req.query.query;
+                // console.log('Key: '+ key + '\t Query: '+query)
             
-            const response = await axios.get(`http://www.omdbapi.com/?apikey=6b526007&s=${query}`);            
-            const movies = response.data.Search;
-            res.json(movies)
+            // Check if the query is empty
+            // if(!query){
+            //     let errorMsg = true
+            //    res.render('home', {errorMsg: errorMsg})
+            // } else{
+                // Fetches the data from de API and send the data to the view
+                const response = await axios.get(`http://www.omdbapi.com/?apikey=${key}&s=${query}`);            
+                const movies = await response.data.Search
+                // console.log(movies)
+                res.render('home', {movies: movies});
+            // }
         } catch (error) {
             console.log(error);
-            res.render('error');
         }
+    },
+
+    async getMovie(req, res) {
+        try{
+           const key = req.key;
+           const type = req.params.type;
+           const imdbId = req.params.id;
+
+           const response = await axios.get(`http://www.omdbapi.com/?apikey=${key}&type=${type}&i=${imdbId}`);
+           const data = await response.data;
+            
+           console.log(data)
+           // Check if there is a result
+        //    if (response.Response == 'True'){
+            res.render('movie/movie', {data: data})
+        //    } else {
+        //     res.redirect('home');
+        //    }
+
+        } catch(error){
+            console.log(error)
+        }
+        
     }
 };
 

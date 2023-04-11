@@ -17,7 +17,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
-    <header class="mb-auto">
+    <header class="mb-3">
         <nav class="navbar bg-body-tertiary">
             <div class="container-fluid d-flex justify-content-center align-items-center">
                 <a class="navbar-brand" href="/">
@@ -26,85 +26,50 @@
             </div>
         </nav>
     </header>
-    <div class="container-sm d-flex w-100 h-100 p-3 mx-auto flex-column">
-        <div class="container align-items-center">
-            <div class="row justify-content-center px-4 m-3">
-                <div class="card-group w-75">
-                    <div class="card">
-                        <img src="img/unknown.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <div class="input-group mb-3">
-                                <form action="/search" method="get">
-                                    <input type="text" name="movie1" id="movie1-search-input" class="form-control"
-                                        placeholder="Pick a movie">
-                                    <ul id="search-results"></ul>
-                                </form>
-
-                            </div>
-                        </div>
+    <div class="container-sm align-items-center">
+        <div class="input-group mb-3 justify-content-center">
+            <form action="/search" id="search-form" method="get">
+                <div class="row">
+                    <div class="col-8">
+                        <input type="text" name="query" id="movie1-search-input" class="form-control"
+                            placeholder="Pick a movie">
                     </div>
-                    <div class="card">
-                        <div class="card-body d-flex justify-content-center align-items-center">
-                            <i class="bi bi-plus-lg display-1"></i>
-                        </div>
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-primary">Search</button>
                     </div>
-                    <div class="card">
-                        <img src="img/unknown.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <div class="input-group mb-3">
-                                <input type="text" name="movie2" id="movie2" class="form-control"
-                                    placeholder="Pick a movie">
-                            </div>
-                        </div>
+                </div>
+            </form>
+        </div>
+        {{#if movies.length}}
+        <div id="search-results" class="row row-cols-1 row-cols-md-6 g-4">
+            {{#each movies}}
+            <div class="col">
+                form
+                <div class="card h-100">
+                    <a href="/{{this.Type}}/{{this.imdbID}}">
+                        <img src="{{this.Poster}}" title="{{this.Title}}" class="card-img-top" alt="{{this.Title}}">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="fs-6 card-title">{{this.Title}}</h5>
+                        <h5 class="fs-6 card-title">{{this.Year}}</h5>
                     </div>
                 </div>
             </div>
-        </div>
-        {{#if results}}
-        <hr>
-        <div class="container row justify-content-center px-4 m-3" id="results">
-            <ul class="list-unstyled d-flex">
-                <li class="list-group-item p-2">
-                    <a href="#"><img
-                            src="https://img.elo7.com.br/product/original/38ED4D1/poster-adesivo-pulp-fiction-em-ingles-42-5x60cm-enfeite.jpg"
-                            width="147" height="207.5" alt="...">
-                    </a>
-                </li>
-                <li class="list-group-item p-2">
-                    <a href="#"><img
-                            src="https://img.elo7.com.br/product/original/38ED4D1/poster-adesivo-pulp-fiction-em-ingles-42-5x60cm-enfeite.jpg"
-                            width="147" height="207.5" alt="...">
-                    </a>
-                </li>
-                <li class="list-group-item p-2">
-                    <a href="#"><img
-                            src="https://img.elo7.com.br/product/original/38ED4D1/poster-adesivo-pulp-fiction-em-ingles-42-5x60cm-enfeite.jpg"
-                            width="147" height="207.5" alt="...">
-                    </a>
-                </li>
-                <li class="list-group-item p-2">
-                    <a href="#"><img
-                            src="https://img.elo7.com.br/product/original/38ED4D1/poster-adesivo-pulp-fiction-em-ingles-42-5x60cm-enfeite.jpg"
-                            width="147" height="207.5" alt="...">
-                    </a>
-                </li>
-                <li class="list-group-item p-2">
-                    <a href="#"><img
-                            src="https://img.elo7.com.br/product/original/38ED4D1/poster-adesivo-pulp-fiction-em-ingles-42-5x60cm-enfeite.jpg"
-                            width="147" height="207.5" alt="...">
-                    </a>
-                </li>
-                <li class="list-group-item p-2">
-                    <a href="#"><img
-                            src="https://img.elo7.com.br/product/original/38ED4D1/poster-adesivo-pulp-fiction-em-ingles-42-5x60cm-enfeite.jpg"
-                            width="147" height="207.5" alt="...">
-                    </a>
-                </li>
-            </ul>
+            {{/each}}
         </div>
         {{/if}}
+        {{!-- {{#if errorMsg}}
+        <div class="d-flex align-items-center justify text center">
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                No results. Pleasy try again!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+        {{/if}} --}}
     </div>
-
+    <div>
+        {{{body}}}
+    </div>
     <div class="footer">
         <footer class="py-3 my-4 border-top d-flex justify-content-center align-items-center">
             <ul class="nav list-unstyled">
@@ -124,7 +89,6 @@
             </ul>
         </footer>
     </div>
-
 </body>
 
 </html>
@@ -140,36 +104,7 @@
 </script>
 
 <script>
-    const searchInput = document.getElementById('movie1-search-input');
-    const searchResults = document.getElementById('search-results');
 
-    searchInput.onkeyup(function {
-        const search = $(this.value).serialize(); // serializa os dados do form
-        // envia o AJAX request
-        $.ajax({
-            type: 'GET',
-            url: '/search',
-            data: search,
-            success: function (response) {
-                console.log(response)
-            }
-                    error: function (err) {
-                console.log(err);
-            }
-        });
-    });
-
-    //searchResults.addEventListener('change', function () {
-      //  const selectedValue = this.value;
-        //axios.get(`http://www.omdbapi.com/?i=${selectedValue}&apikey=<your_api_key>`)
-          //  .then(response => {
-            //    const movie = response.data;
-                // Display the selected movie in some way
-            //})
-            //.catch(error => {
-              //  console.log(error);
-           // });
-    //});
 </script>
 
 {{!-- BRAND COLORS
