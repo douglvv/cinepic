@@ -34,8 +34,8 @@
                         <img src="img/unknown.png" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="input-group mb-3">
-                                <form action="/search" method="get">
-                                    <input type="text" name="movie1" id="movie1-search-input" class="form-control"
+                                <form action="/search" id="form-search-input" method="get">
+                                    <input type="text" name="query" id="movie1-search-input" class="form-control"
                                         placeholder="Pick a movie">
                                     <ul id="search-results"></ul>
                                 </form>
@@ -60,7 +60,7 @@
                 </div>
             </div>
         </div>
-        {{#if results}}
+        {{#if movies}}
         <hr>
         <div class="container row justify-content-center px-4 m-3" id="results">
             <ul class="list-unstyled d-flex">
@@ -140,10 +140,10 @@
 </script>
 
 <script>
-    const searchInput = document.getElementById('movie1-search-input');
+    const searchForm = document.getElementById('form-search-input');
     const searchResults = document.getElementById('search-results');
 
-    searchInput.onkeyup(function {
+    searchForm.onsubmit(function {
         const search = $(this.value).serialize(); // serializa os dados do form
         // envia o AJAX request
         $.ajax({
