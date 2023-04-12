@@ -44,7 +44,6 @@
         <div id="search-results" class="row row-cols-1 row-cols-md-6 g-4">
             {{#each movies}}
             <div class="col">
-                form
                 <div class="card h-100">
                     <a href="/{{this.Type}}/{{this.imdbID}}">
                         <img src="{{this.Poster}}" title="{{this.Title}}" class="card-img-top" alt="{{this.Title}}">
@@ -61,7 +60,7 @@
         {{!-- {{#if errorMsg}}
         <div class="d-flex align-items-center justify text center">
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                No results. Pleasy try again!
+                No results, pleasy search again!
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         </div>
