@@ -17,11 +17,11 @@ const Controller = {
             if (response.data.Response == "True") { // Sends the data to the view
                 console.log("Response: " + response.data.Response)
                 console.log(result)
-                res.render('home', { result: result });
+                res.render('search/search', { result: result });
             } else { // Sends the error message to the view
                 let errorMsg = "No results found, please try searching again."
                 console.log("errorMsg: " + errorMsg)
-                res.render('home', { errorMsg: errorMsg })
+                res.render('search/search', { errorMsg: errorMsg })
             }
         } catch (error) {
             console.log(error);
@@ -43,20 +43,20 @@ const Controller = {
             if (response.data.Response == "True"){ // Sends the data to the view
                 console.log("Response: " + response.data.Response)
                 console.log(result)
-                res.render('movie/movie', { result: result })    
-            } else { // Sends the error message to the view
-                let errorMsg = true
-                console.log()
+                res.render('title/title', { result: result })    
+            } else { // Sends an error status
+                const errorMsg = response.data.Error
+                res.status(404).send('Error: ' + errorMsg + '\n Please try again later');
             }
-            
-            
-
-
         } catch (error) {
             console.log(error)
         }
+    },
+    
 
-    }
-};
+
+
+
+}; // End
 
 module.exports = Controller;
