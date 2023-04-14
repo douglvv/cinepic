@@ -13,20 +13,20 @@ app.set("view engine", "handlebars");
 app.use(express.json())
 app.use(express.static('public'))
 
-// Main route
+// Rota principal
 app.get('/', function (req, res) { res.render('home')})
 
 
 const router = express.Router();
 const Controller = require("./Controller");
-const getAPIKey = require('./helpers/key'); // Middleware for API Key
+const getAPIKey = require('./helpers/key'); // Middleware para a Key da API
 
 // Routes
 app.use(router)
-router.get('/', function (req, res) {res.render('home')}); // Main route
-router.get('/search', function (req, res) {res.render('search/search')}); // Loads search page
-router.get('/search/s/', getAPIKey, Controller.searchMovie); // Searches for a title and display results
-router.get('/:type/:id', getAPIKey, Controller.getMovie); // Displays all data of a title
+router.get('/', function (req, res) {res.render('home')}); // Rota principal
+router.get('/search', function (req, res) {res.render('search/search')}); // Carrega a página de pesquisa
+router.get('/search/s/', getAPIKey, Controller.searchTitle); // Pesquisa um título e carrega os resultados
+router.get('/:type/:id', getAPIKey, Controller.getTitle); // Mostra todos os dados de um título
 
 
 try {
