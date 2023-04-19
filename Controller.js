@@ -25,6 +25,7 @@ const Controller = {
             }
         } catch (error) {
             console.log(error);
+            res.status(404).send('Error: ' + error);
         }
     },
 
@@ -46,16 +47,13 @@ const Controller = {
                 res.render('title/title', { result: result })    
             } else { // Envia um status de erro
                 const errorMsg = response.data.Error
-                res.status(404).send('Error: ' + errorMsg + ' Please try again later');
+                res.status(404).send('Error: ' + errorMsg + ' Please try again');
             }
         } catch (error) {
             console.log(error)
+            res.status(404).send('Error: ' + error);
         }
     },
-    
-
-
-
 
 }; // Fim da classe
 
