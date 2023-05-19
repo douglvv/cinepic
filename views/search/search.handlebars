@@ -1,0 +1,52 @@
+<title>Cinepic - Search</title>
+<div class="container-sm align-items-center mb-5" style="height: 100vh;">
+
+    <div class="search-bar container">
+        <form action="/search/s/" id="search-form" method="get">
+            <div class="input-group p-3 m-3">
+                <input type="text" name="title" id="search-query"
+                    class="form-control text-center fs-4 border-0 bg-body-tertiary" placeholder="Search for a title..."
+                    aria-describedby="button-addon2">
+                <button class="btn btn-outline-danger border-0 bg-body-tertiary" type="submit" id="button-addon2">
+                    <i class="fs-2 bi bi-search"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    {{!-- FAZER OPCAO DE PULAR PROXIMA PAGINA NA BUSCA --}}
+    {{#if result}}
+    <div id="search-results" class="row row-cols-1 row-cols-md-5 g-4">
+        {{#each result}}
+        <div class="col">
+            <div class="card text-bg-dark">
+                <div class="position-relative">
+                    <img src="{{this.Poster}}" class="card-img" alt="{{this.Title}}">
+                    <a class="text-white stretched-link" href="/{{this.Type}}/{{this.imdbID}}" title="{{this.Title}}">
+                        <div class="card-img-overlay d-flex flex-column justify-content-end">
+                            <h5 class="card-title mb-0 fs-6" style="text-shadow: 3px 3px 5px #000000">
+                                <small>{{this.Title}}</small>
+                            </h5>
+                            <p class="card-text fs-6" style="text-shadow: 3px 3px 5px #000000">
+                                <small>{{this.Year}}</small></p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    {{/if}}
+
+    {{#if errorMsg}}
+    <div class="d-flex align-items-center justify-content-center">
+        <div class="col-md-6">
+            <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+                {{errorMsg}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+
+</div>

@@ -8,126 +8,48 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../public/css/styles.css">
-
-    <title>Cinepic</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 
-<body data-bs-theme="light">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-        crossorigin="anonymous"></script>
-    <header class="mb-auto">
+<body data-bs-theme="dark">
+    {{!-- Nav --}}
+    <header class="mb-3">
         <nav class="navbar bg-body-tertiary">
-            <div class="container-fluid d-flex justify-content-center align-items-center">
-                <a class="navbar-brand" href="/">
-                    <img src="img/logo.png" alt="Logo" width="185" height="45.5">
+            <div class="container-fluid d-flex justify-content-center">
+                <a class="navbar-brand m-3" href="/" title="Cinepic">
+                    <img src="/img/logo.png" alt="Logo" width="185" height="45.5">
                 </a>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a href="/search" title="Search for a title" class="m-3 nav-link">
+                            <i class="fs-4 bi bi-search text-danger"></i>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </nav>
     </header>
-    <div class="container-sm d-flex w-100 h-100 p-3 mx-auto flex-column">
-        <div class="container align-items-center">
-            <div class="row justify-content-center px-4 m-3">
-                <div class="card-group w-75">
-                    <div class="card">
-                        <img src="img/unknown.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <div class="input-group mb-3">
-                                <form action="/search" id="form-search-input" method="get">
-                                    <input type="text" name="query" id="movie1-search-input" class="form-control"
-                                        placeholder="Pick a movie">
-                                    <ul id="search-results"></ul>
-                                </form>
 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body d-flex justify-content-center align-items-center">
-                            <i class="bi bi-plus-lg display-1"></i>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="img/unknown.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <div class="input-group mb-3">
-                                <input type="text" name="movie2" id="movie2" class="form-control"
-                                    placeholder="Pick a movie">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {{#if movies}}
-        <hr>
-        <div class="container row justify-content-center px-4 m-3" id="results">
-            <ul class="list-unstyled d-flex">
-                <li class="list-group-item p-2">
-                    <a href="#"><img
-                            src="https://img.elo7.com.br/product/original/38ED4D1/poster-adesivo-pulp-fiction-em-ingles-42-5x60cm-enfeite.jpg"
-                            width="147" height="207.5" alt="...">
-                    </a>
-                </li>
-                <li class="list-group-item p-2">
-                    <a href="#"><img
-                            src="https://img.elo7.com.br/product/original/38ED4D1/poster-adesivo-pulp-fiction-em-ingles-42-5x60cm-enfeite.jpg"
-                            width="147" height="207.5" alt="...">
-                    </a>
-                </li>
-                <li class="list-group-item p-2">
-                    <a href="#"><img
-                            src="https://img.elo7.com.br/product/original/38ED4D1/poster-adesivo-pulp-fiction-em-ingles-42-5x60cm-enfeite.jpg"
-                            width="147" height="207.5" alt="...">
-                    </a>
-                </li>
-                <li class="list-group-item p-2">
-                    <a href="#"><img
-                            src="https://img.elo7.com.br/product/original/38ED4D1/poster-adesivo-pulp-fiction-em-ingles-42-5x60cm-enfeite.jpg"
-                            width="147" height="207.5" alt="...">
-                    </a>
-                </li>
-                <li class="list-group-item p-2">
-                    <a href="#"><img
-                            src="https://img.elo7.com.br/product/original/38ED4D1/poster-adesivo-pulp-fiction-em-ingles-42-5x60cm-enfeite.jpg"
-                            width="147" height="207.5" alt="...">
-                    </a>
-                </li>
-                <li class="list-group-item p-2">
-                    <a href="#"><img
-                            src="https://img.elo7.com.br/product/original/38ED4D1/poster-adesivo-pulp-fiction-em-ingles-42-5x60cm-enfeite.jpg"
-                            width="147" height="207.5" alt="...">
-                    </a>
-                </li>
-            </ul>
-        </div>
-        {{/if}}
-    </div>
+    
+    {{!-- CADASTRO DE USUARIOS COM OPCAO DE CURTIR O FILME OU SALVR E ALGUMAS COISAS PARA FAZER COM ESSA CONTA --}}
+    {{!-- FAZER UM DARK MODE --}}
 
-    <div class="footer">
-        <footer class="py-3 my-4 border-top d-flex justify-content-center align-items-center">
-            <ul class="nav list-unstyled">
-                <li class="ms-3">
-                    <p>2023 | @Developed by Douglas Vidal | vidaldl01@gmail.com</p>
-                </li>
-                <li class="ms-3">
-                    <a href="https://www.github.com/douglvv" target="_blank">
-                        <i class="bi bi-github"></i>
-                    </a>
-                </li>
-                <li class="ms-3">
-                    <a href="https://www.instagram.com/douglasvvidal" target="_blank">
-                        <i class="bi bi-instagram"></i>
-                    </a>
-                </li>
-            </ul>
-        </footer>
-    </div>
+
+    {{!-- Body --}}
+    <main>
+        {{{body}}}
+    </main>
+
+    {{!-- Footer --}}
+    <footer>
+        {{> footer}}
+    </footer>
 
 </body>
 
 </html>
+
+
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
     integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
     crossorigin="anonymous"></script>
@@ -138,44 +60,3 @@
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 </script>
-
-<script>
-    const searchForm = document.getElementById('form-search-input');
-    const searchResults = document.getElementById('search-results');
-
-    searchForm.onsubmit(function {
-        const search = $(this.value).serialize(); // serializa os dados do form
-        // envia o AJAX request
-        $.ajax({
-            type: 'GET',
-            url: '/search',
-            data: search,
-            success: function (response) {
-                console.log(response)
-            }
-                    error: function (err) {
-                console.log(err);
-            }
-        });
-    });
-
-    //searchResults.addEventListener('change', function () {
-      //  const selectedValue = this.value;
-        //axios.get(`http://www.omdbapi.com/?i=${selectedValue}&apikey=<your_api_key>`)
-          //  .then(response => {
-            //    const movie = response.data;
-                // Display the selected movie in some way
-            //})
-            //.catch(error => {
-              //  console.log(error);
-           // });
-    //});
-</script>
-
-{{!-- BRAND COLORS
-#fcfcfc
-#070707
-#480712
-#8a081d
-#cc0928
---}}
